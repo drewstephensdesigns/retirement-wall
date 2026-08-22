@@ -1,0 +1,622 @@
+:root {
+  --paper: #FAF7F1;
+  --paper-raised: #FFFFFF;
+  --ink: #1E2A35;
+  --ink-soft: #5C6773;
+  --brass: #B8875A;
+  --brass-deep: #96693F;
+  --hairline: #E4DED2;
+  --shadow: 0 1px 2px rgba(30,42,53,0.04), 0 8px 24px rgba(30,42,53,0.06);
+  --radius: 10px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: 88px 24px 72px;
+  border-bottom: 1px solid var(--hairline);
+  background:
+    radial-gradient(ellipse 900px 400px at 50% -10%, rgba(184,135,90,0.10), transparent 60%),
+    var(--paper);
+}
+
+.hero-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brass-deep);
+  margin: 0 0 18px;
+}
+
+.headline {
+  font-family: 'Fraunces', serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-size: clamp(36px, 6vw, 58px);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  margin: 0 0 20px;
+}
+
+.headline span { font-style: italic; color: var(--brass-deep); }
+
+.quote {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 17px;
+  color: var(--brass-deep);
+  margin: 0 0 24px;
+}
+
+.quote-attr {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-style: normal;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: 8px;
+}
+
+.sub {
+  font-size: 17px;
+  color: var(--ink-soft);
+  max-width: 480px;
+  margin: 0 auto 32px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 13px 28px;
+  border-radius: 999px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.btn-primary:hover { background: var(--brass-deep); }
+.btn-primary:focus-visible { outline: 3px solid var(--brass); outline-offset: 2px; }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-text {
+  background: none;
+  border: none;
+  color: var(--ink-soft);
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+/* ---------- Section labels ---------- */
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 16px;
+}
+
+/* ---------- Add note ---------- */
+.add-section {
+  max-width: 560px;
+  margin: -40px auto 0;
+  padding: 0 24px 64px;
+}
+
+.add-card {
+  background: var(--paper-raised);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 32px;
+}
+
+.field { margin-bottom: 18px; }
+
+.field label {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.field .optional {
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+
+input[type="text"], textarea {
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  padding: 11px 14px;
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+  background: var(--paper);
+  color: var(--ink);
+  resize: vertical;
+}
+
+input[type="text"]:focus, textarea:focus {
+  outline: none;
+  border-color: var(--brass);
+  box-shadow: 0 0 0 3px rgba(184,135,90,0.15);
+}
+
+input[type="file"] { font-size: 13px; color: var(--ink-soft); }
+
+.photo-preview {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.photo-preview img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid var(--hairline);
+}
+
+.form-status {
+  display: block;
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.form-status.error { color: #B23B3B; }
+.form-status.success { color: #4A7A54; }
+
+/* ---------- Places served map ---------- */
+.map-section {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px 64px;
+}
+
+.tdy-marker span {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ink-soft);
+  border: 1.5px solid var(--paper-raised);
+  box-shadow: 0 0 0 1px var(--hairline);
+  opacity: 0.75;
+}
+
+.locations-map {
+  height: 420px;
+  border-radius: var(--radius);
+  border: 1px solid var(--hairline);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  background: var(--paper-raised);
+}
+
+.loc-marker span {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--brass);
+  border: 2px solid var(--paper-raised);
+  box-shadow: 0 0 0 2px var(--brass-deep);
+}
+
+.leaflet-popup-content-wrapper {
+  background: var(--paper-raised);
+  color: var(--ink);
+  font-family: 'Inter', sans-serif;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.leaflet-popup-content { margin: 10px 12px; font-size: 13px; line-height: 1.4; }
+.leaflet-popup-content strong { font-family: 'Fraunces', serif; font-size: 15px; }
+.leaflet-popup-tip { background: var(--paper-raised); }
+
+.map-legend {
+  margin-top: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.deployment-marker span {
+  display: block;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--ink);
+  border: 2px solid var(--paper-raised);
+  box-shadow: 0 0 0 2px var(--ink-soft);
+}
+
+.legend-dot-main { background: var(--brass); }
+.legend-dot-tdy { background: var(--ink-soft); opacity: 0.75; }
+.legend-dot-deploy { background: var(--ink); }
+
+
+/* ---------- Wall ---------- */
+.wall-section {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px 96px;
+}
+
+.wall-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--hairline);
+  padding-bottom: 12px;
+  margin-bottom: 24px;
+}
+
+.wall-count {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.wall-empty {
+  color: var(--ink-soft);
+  font-style: italic;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.wall {
+  columns: 3 280px;
+  column-gap: 20px;
+}
+
+/* ---------- Wall Introduction ---------- */
+
+.wall-intro {
+  max-width: 720px;
+  margin: 0 auto 40px;
+  padding: 28px 32px;
+  border-left: 3px solid var(--brass);
+  background: rgba(184, 135, 90, 0.06);
+}
+
+.wall-intro-title {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--ink);
+  margin: 0 0 12px;
+}
+
+.wall-intro p:not(.wall-intro-title) {
+  color: var(--ink-soft);
+  font-size: 15px;
+  margin: 0 0 10px;
+}
+
+.wall-intro p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+  .wall-intro {
+    padding: 24px;
+    margin-bottom: 32px;
+  }
+
+  .wall-intro-title {
+    font-size: 21px;
+  }
+}
+
+@media (max-width: 720px) {
+  .wall { columns: 1 280px; }
+}
+
+.entry {
+  break-inside: avoid;
+  background: var(--paper-raised);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  margin-bottom: 20px;
+  animation: rise 0.4s ease both;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.entry-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--brass-deep);
+  margin: 0 0 10px;
+}
+
+.entry-photo {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  display: block;
+  cursor: zoom-in;
+}
+
+.entry-message {
+  font-size: 15px;
+  color: var(--ink);
+  margin: 0 0 14px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.entry-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-top: 1px solid var(--hairline);
+  padding-top: 10px;
+}
+
+.entry-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.entry-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-soft);
+}
+
+/* ---------- Reaction --------- */
+.like-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  background: none;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.like-btn:hover:not(:disabled) {
+  border-color: var(--brass);
+  color: var(--brass-deep);
+}
+
+.like-btn.liked {
+  border-color: var(--brass);
+  color: var(--brass-deep);
+  background: rgba(184,135,90,0.08);
+}
+
+.like-btn:disabled { cursor: default; }
+
+.like-heart { font-size: 15px; line-height: 1; }
+.like-count { font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+
+/* ---------- New entry pulse (kiosk mode) ---------- */
+/* NEW SECTION — app.js adds the .new-entry class to a card for ~2 pulses
+   when it detects the entry wasn't in the previous Firestore snapshot */
+@keyframes pulseNew {
+  0% { box-shadow: 0 0 0 0 rgba(184,135,90,0.55); }
+  70% { box-shadow: 0 0 0 16px rgba(184,135,90,0); }
+  100% { box-shadow: 0 0 0 0 rgba(184,135,90,0); }
+}
+
+.entry.new-entry { animation: pulseNew 1.8s ease-out 2; }
+
+/* ---------- Kiosk / slideshow mode ---------- */
+/* NEW SECTION — app.js adds class="kiosk" to <body> when the URL has ?display.
+   Nothing here does anything unless that JS runs, so this whole block is inert
+   until app.js's isKiosk logic is in place. */
+body.kiosk .add-section,
+body.kiosk .site-footer,
+body.kiosk #leave-note-btn {
+  display: none;
+}
+
+body.kiosk .hero { padding: 48px 24px 32px; }
+body.kiosk .headline { font-size: clamp(32px, 5vw, 52px); }
+body.kiosk .sub { display: none; }
+body.kiosk .wall-section { padding-top: 8px; }
+body.kiosk .wall { columns: 4 320px; }
+body.kiosk .entry-message { font-size: 16px; }
+body.kiosk .like-btn { pointer-events: none; }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  text-align: center;
+  padding: 32px 24px 48px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+/* ---------- Lightbox ---------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(20,26,32,0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  z-index: 100;
+}
+
+.lightbox[hidden] {
+  display: none;
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 6px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* ---------- GitHub Footer Link ---------- */
+
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+  color: var(--ink-soft);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.github-icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.github-link:hover {
+  color: var(--ink);
+  transform: translateY(-1px);
+}
+
+.github-link:focus-visible {
+  outline: 3px solid var(--brass);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* ---------- Aircraft / MX Badge Display ---------- */
+
+.aircraft-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  margin: 0 auto 28px;
+  width: 100%;
+}
+
+.aircraft-display img {
+  display: block;
+  width: auto;
+  height: 84px;
+  object-fit: contain;
+  opacity: 0.88;
+  mix-blend-mode: multiply;
+}
+
+.aircraft-display .badge {
+  height: 100px;
+  flex-shrink: 0;
+}
+
+.aircraft-display .aircraft {
+  flex: 0 1 auto;
+  max-width: 38%;
+}
+
+.aircraft-display .c130J {
+  transform: rotate(-35deg);
+}
+
+.aircraft-display .b52H {
+  transform: rotate(4deg);
+  transform-origin: center center;
+}
+
+/* Keep the aircraft arrangement usable on phones */
+@media (max-width: 600px) {
+  .aircraft-display {
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .aircraft-display img {
+    height: 58px;
+  }
+
+  .aircraft-display .badge {
+    height: 72px;
+  }
+
+  .aircraft-display .aircraft {
+    max-width: 32%;
+  }
+}
+
